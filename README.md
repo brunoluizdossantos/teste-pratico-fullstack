@@ -50,4 +50,7 @@ https://localhost:5001/swagger/index.html
 
 # Para visualizar a UI
 http://localhost:4200/
+
+# Para visualizar o banco de dados
+http://localhost:8080/
 ```
