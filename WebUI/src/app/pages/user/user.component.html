@@ -1,0 +1,18 @@
+<app-admin-header></app-admin-header>
+
+<div class="row px-5 pb-5">
+    <div class="col-md-12">
+        <h1 class="mb-4 text-light">Detalhes do usuário</h1>
+
+        <div class="card my-5" *ngIf="user">
+            <div class="card-body">
+                <p><b>Id:</b> {{ user.id }}</p>
+                <p><b>Nome:</b> {{ user.name }}</p>
+                <p><b>E-mail:</b> {{ user.email }}</p>
+                <p><b>Data de Cadastro:</b> {{ user.createdAt }}</p>
+            </div>
+        </div>
+
+        <a class="btn btn-dark" routerLink="/admin/users" *ngIf="user">Voltar</a>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="row mt-5 p-5">
+    <div class="col-md-6 p-5 mb-4">
+        <app-default-logo></app-default-logo>
+    </div>
+
+    <div class="col-md-6 p-5 bg-white">
+        <div *ngIf="!successResponse">
+            <h2 class="mb-4">Cadastre-se</h2>
+            <p>Já tem uma conta? <a routerLink="/">Entre</a> na sua conta.</p>
+
+            <form [formGroup]="userForm" class="mt-5">
+                <fieldset>
+                    <div class="form-group mb-3">
+                        <label class="mb-1" for="name">Nome completo</label>
+                        <input class="form-control" id="name" name="name" type="text" formControlName="name" [class.is-invalid]="userForm.get('name')?.errors && userForm.get('name')?.touched" />
+                        <div *ngIf="userForm.get('name')?.hasError('required')" class="invalid-feedback">O campo nome é obrigatório</div>
+                        <div *ngIf="userForm.get('name')?.hasError('minLength')" class="invalid-feedback">O nome deve ter pelo menos 3 caracteres</div>
+                        <div *ngIf="userForm.get('name')?.hasError('maxlength')" class="invalid-feedback">O nome deve ter no máximo 50 caracteres</div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="mb-1" for="email">Endereço de e-mail</label>
+                        <input class="form-control" id="email" name="email" type="email" formControlName="email" [class.is-invalid]="userForm.get('email')?.errors && userForm.get('email')?.touched" />
+                        <div *ngIf="userForm.get('email')?.hasError('required')" class="invalid-feedback">O campo e-mail é obrigatório</div>
+                        <div *ngIf="userForm.get('email')?.hasError('email')" class="invalid-feedback">O e-mail deve ser válido</div>
+                        <div *ngIf="userForm.get('email')?.hasError('minLength')" class="invalid-feedback">O e-mail deve ter pelo menos 3 caracteres</div>
+                        <div *ngIf="userForm.get('email')?.hasError('maxlength')" class="invalid-feedback">O e-mail deve ter no máximo 50 caracteres</div>
+                    </div>
+                    <div class="form-group">
+                        <button [disabled]="!userForm.valid" (click)="submitForm()" class="btn btn-dark btn-block" type="submit">Cadastrar</button>
+                    </div>
+                    <div *ngIf="errorResponse" class="alert alert-danger mt-4" role="alert">
+                        {{ errorResponse }}
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div *ngIf="successResponse">
+            <h2 class="mb-4">Cadastro finalizado</h2>
+            <p>Acesse a área administrativa com suas credenciais abaixo:</p>
+            <p><strong>E-mail:</strong> {{ userEmail }}</p>
+            <p><strong>Senha:</strong> {{ userPassword }}</p>
+            <p class="mt-4"><strong>Importante: Sua senha foi gerada automaticamente,</strong> e é importante mantê-la em um lugar confiável logo após visualizar esta tela.</p>
+
+            <div class="mt-5">
+                <a class="btn btn-dark btn-block" routerLink="/">Voltar para o login</a>
+            </div>
+        </div>
+    </div>
+</div>

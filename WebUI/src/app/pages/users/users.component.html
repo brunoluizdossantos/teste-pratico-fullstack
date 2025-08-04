@@ -1,0 +1,29 @@
+<app-admin-header></app-admin-header>
+
+<div class="row px-5 pb-5">
+    <div class="col-md-12">
+        <h1 class="mb-4 text-light">Lista de usuários cadastrados</h1>
+        <h5 class="text-light text-line" *ngIf="totalRecords">Total de registros: {{ totalRecords }}</h5>
+
+        <table class="table table-hover mt-5" *ngIf="users">
+            <thead>
+                <tr>
+                    <th class="p-3">Nome completo</th>
+                    <th class="p-3">Endereço de e-mail</th>
+                    <th class="p-3">Data de Cadastro</th>
+                    <th class="p-3"></th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let user of users">
+                <tr>
+                    <td class="p-3">{{ user.name }}</td>
+                    <td class="p-3">{{ user.email }}</td>
+                    <td class="p-3">{{ user.createdAt }}</td>
+                    <td class="p-3">
+                        <a [routerLink]="['/admin/users', user.id]">Detalhes</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

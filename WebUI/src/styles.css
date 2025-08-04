@@ -1,0 +1,27 @@
+body {
+    background-color: #775afb !important;
+}
+input {
+    padding: .5rem 1rem !important;
+}
+.btn-block {
+    padding: .6rem 1rem !important;
+    width: 100%;
+}
+.text-line {
+    line-height: 1.5;
+}
+.rounded-full {
+    border-radius: 9999px;
+}
+.menu-link {
+    color: #fff;
+    text-decoration: none;
+}
+.menu-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+.card {
+    border-radius: 0 !important;
+}
